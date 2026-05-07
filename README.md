@@ -1,5 +1,4 @@
-# Beyond Final Accuracy
-## Temporal Behavioral Diagnostics for Deep Neural Learning Dynamics
+# Beyond Final Accuracy: Temporal Behavioral Diagnostics for Deep Neural Learning Dynamics
 
 ---
 
