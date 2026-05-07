@@ -5,6 +5,8 @@
 
 # Overview
 
+This research presents a Temporal Behavioral Diagnostics Framework (TBDF) for analyzing how deep neural networks learn over time through sample-wise temporal learning dynamics. Unlike traditional deep learning approaches that evaluate models only using final accuracy and loss, the proposed framework studies the complete learning behavior of individual samples across training epochs, including forgetting events, confidence evolution, temporal stability, and prediction consistency. The system introduces behavioral metrics such as Forgetting Severity Index (FSI), Confidence Drift Metric (CDM), and Temporal Stability Score (TSS) to quantify learning instability and behavioral patterns during neural training. By combining temporal tracking, statistical validation, predictive learning analysis, and visualization-driven diagnostics, the framework provides interpretable insights into neural learning behavior, sample stability, and future misclassification risk. Experimental evaluation on CIFAR-10 demonstrates that temporal learning dynamics contain meaningful behavioral signals that can be used for understanding neural training processes, behavioral categorization, and predictive learning diagnostics beyond conventional static performance evaluation.\
+
 Modern deep learning systems are usually evaluated using static metrics such as:
 - Final Accuracy
 - Validation Loss
