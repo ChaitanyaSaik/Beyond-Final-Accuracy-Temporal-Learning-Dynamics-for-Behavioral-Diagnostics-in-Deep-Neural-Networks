@@ -1,116 +1,163 @@
-# Temporal Learning Dynamics Framework v2.0
-## Beyond Final Accuracy: Temporal Behavioral Diagnostics for Deep Neural Networks
+# Beyond Final Accuracy
+## Temporal Behavioral Diagnostics for Deep Neural Learning Dynamics
 
 ---
 
-## Overview
+# Overview
 
-Temporal Learning Dynamics Framework (TLDF) v2.0 is a research-oriented deep learning diagnostics framework designed to analyze how neural networks learn over time rather than evaluating only final accuracy metrics.
-
-Traditional deep learning systems focus mainly on:
+Modern deep learning systems are usually evaluated using static metrics such as:
 - Final Accuracy
 - Validation Loss
-- Confusion Matrix
-- Static Confidence Scores
+- Precision / Recall
+- Confusion Matrices
 
-However, these metrics fail to explain:
-- Which samples are unstable during learning
-- Which samples are repeatedly forgotten
-- Which samples behave abnormally across epochs
-- How confidence changes during training
-- Whether noisy or mislabeled samples can be detected early
+While these metrics measure final performance, they fail to explain:
 
-This project introduces a temporal behavioral analysis framework that studies sample-wise learning trajectories throughout the entire training process.
+- How neural networks learn over time
+- Which samples become unstable during training
+- How confidence evolves across epochs
+- Why certain samples are repeatedly forgotten
+- Which learning patterns indicate future prediction risk
 
-Instead of treating learning as a single final outcome, the framework models learning as a dynamic temporal process.
+This project introduces a **Temporal Behavioral Diagnostics Framework (TBDF)** — a research-oriented system designed to analyze neural learning behavior as a temporal process rather than a static endpoint.
 
----
+Instead of focusing only on final predictions, the framework studies:
+- sample-wise learning trajectories
+- forgetting behavior
+- confidence evolution
+- temporal stability
+- behavioral learning patterns
 
-# Core Research Idea
-
-The framework is based on the hypothesis:
-
-> "Learning dynamics themselves contain meaningful information about sample quality, instability, memorization behavior, and future prediction reliability."
-
-The system tracks every training sample across all epochs and converts temporal learning behavior into interpretable research signals.
+across the full training lifecycle of deep neural networks.
 
 ---
 
-# Key Contributions
+# Research Motivation
 
-## 1. Temporal Behavioral Diagnostics
-Tracks learning behavior of every sample across epochs:
-- Correctness transitions
-- Confidence evolution
-- Loss trajectories
-- Forgetting and recovery events
+Deep neural networks often behave as black-box systems where only final outputs are analyzed. However, the internal learning process itself contains important behavioral information.
+
+This project is based on the hypothesis:
+
+> "Temporal learning behavior contains meaningful signals about neural stability, learning consistency, confidence evolution, and future prediction reliability."
+
+The framework shifts deep learning analysis from:
+- static performance evaluation
+
+to:
+- temporal behavioral understanding.
 
 ---
 
-## 2. Novel Temporal Metrics
+# Research Objective
+
+The goal of this framework is NOT to outperform state-of-the-art noisy-label correction systems.
+
+Instead, the project focuses on:
+
+- Understanding learning dynamics
+- Studying sample-wise behavioral evolution
+- Measuring temporal learning stability
+- Analyzing forgetting and recovery behavior
+- Predicting future misclassification risk
+- Building interpretable neural training diagnostics
+
+---
+
+# Core Framework Idea
+
+The framework tracks every training sample across all epochs and records:
+
+- prediction correctness
+- confidence values
+- loss evolution
+- forgetting transitions
+- recovery behavior
+- temporal consistency
+
+These temporal signals are transformed into interpretable behavioral metrics for research analysis.
+
+---
+
+# Key Framework Components
+
+## 1. Temporal Learning Tracker
+
+The system records epoch-wise learning history for every sample.
+
+Tracked information includes:
+- prediction history
+- confidence trajectories
+- correctness transitions
+- loss evolution
+- learning stability
+
+---
+
+## 2. Behavioral Metric Engine
+
+The framework introduces temporal behavioral metrics to quantify learning dynamics.
 
 ### Forgetting Severity Index (FSI)
-Measures repeated correct → wrong transitions during training.
 
-High FSI indicates:
-- Unstable learning
-- Possible noisy labels
-- Hard or ambiguous samples
+Measures repeated:
+- correct → wrong transitions
+
+during training.
+
+FSI captures:
+- learning instability
+- repeated forgetting behavior
+- difficult sample dynamics
 
 ---
 
 ### Confidence Drift Metric (CDM)
-Measures confidence instability and drift velocity across epochs.
+
+Measures temporal confidence instability across epochs.
 
 CDM captures:
-- Confidence oscillation
-- Prediction uncertainty
-- Temporal instability
+- confidence oscillation
+- uncertainty evolution
+- prediction instability
 
 ---
 
 ### Temporal Stability Score (TSS)
+
 Measures long-term learning consistency using:
-- Learning streaks
-- Monotonic improvement
-- Final-stage stability
+- learning streaks
+- monotonic improvement
+- final-stage stability
 
-High TSS indicates stable and reliable learning behavior.
-
----
-
-## 3. Multi-Signal Mislabel Detection
-Combines:
-- FSI
-- CDM
-- TSS
-- Wrong-confidence behavior
-
-to identify suspicious and mislabeled samples.
+TSS categorizes samples into:
+- Stably Learned
+- Partially Learned
+- Unstable
+- Not Learned
 
 ---
 
-## 4. Early Learning Diagnostics
-The framework studies whether unstable samples can be detected before training finishes.
+## 3. Behavioral Diagnostics Engine
 
-This enables:
-- Early dataset auditing
-- Adaptive training
-- Dynamic curriculum learning
-- Future self-healing training systems
+The framework performs:
+- sample-wise learning analysis
+- temporal behavioral categorization
+- forgetting trajectory analysis
+- prediction-risk estimation
 
 ---
 
-## 5. Research-Grade Visualization System
+## 4. Visualization & Interpretability Suite
 
 The framework generates:
-- Forgetting heatmaps
-- Confidence evolution plots
-- Sample learning timelines
-- Phase-transition analysis
-- Metric validation dashboards
-- Mislabel detection ROC curves
-- Precision-Recall analysis
+- forgetting heatmaps
+- confidence evolution plots
+- learning timelines
+- behavioral category analysis
+- temporal phase-transition visualization
+- metric validation dashboards
+
+These visualizations improve interpretability of neural learning behavior.
 
 ---
 
@@ -119,26 +166,26 @@ The framework generates:
 ```text
 Dataset
    ↓
-Noise Injection
+Noise Injection / Data Preparation
    ↓
 Deep Neural Network Training
    ↓
 Epoch-wise Temporal Logging
    ↓
-Temporal Metrics Engine
-   ↓
-Validation & Statistical Analysis
+Temporal Behavioral Metrics
    ↓
 Behavioral Diagnostics
    ↓
-Research Visualization Suite
+Statistical Validation
    ↓
-Scientific Reporting Engine
+Visualization & Analysis
+   ↓
+Research Reporting
 ```
 
 ---
 
-# Dataset & Experimental Setup
+# Experimental Configuration
 
 | Component | Configuration |
 |---|---|
@@ -146,12 +193,12 @@ Scientific Reporting Engine
 | Training Samples | 10,000 |
 | Validation Samples | 2,000 |
 | Test Samples | 2,000 |
-| Noise Injection | 8% Label Corruption |
+| Label Noise | 8% Synthetic Corruption |
 | Model | DiagnosticCNN |
 | Parameters | 718,122 |
 | Epochs | 40 |
+| Optimizer | Adam |
 | Scheduler | Cosine Annealing |
-| Optimizer | AdamW |
 
 ---
 
@@ -167,11 +214,11 @@ Scientific Reporting Engine
 | Final Validation Accuracy | 74.15% |
 | Generalization Gap | -0.0022 |
 
-The framework maintained healthy generalization behavior without severe overfitting.
+The model maintained healthy generalization behavior without severe overfitting.
 
 ---
 
-# Temporal Metric Statistics
+# Temporal Behavioral Analysis
 
 ## Forgetting Severity Index (FSI)
 
@@ -179,7 +226,9 @@ The framework maintained healthy generalization behavior without severe overfitt
 |---|---|
 | Mean FSI | 4.912 |
 | Maximum FSI | 20.90 |
-| High-FSI Samples (>3) | 56.0% |
+| High-FSI Samples | 56.0% |
+
+The results indicate substantial forgetting dynamics during CIFAR-10 training.
 
 ---
 
@@ -188,47 +237,35 @@ The framework maintained healthy generalization behavior without severe overfitt
 | Metric | Value |
 |---|---|
 | Mean CDM | 0.24731 |
-| High Drift Samples (>0.15) | 96.8% |
+| High Drift Samples | 96.8% |
 | Mean Calibration Gap | 0.3538 |
+
+The framework observed widespread confidence instability during training.
 
 ---
 
-## Temporal Stability Score (TSS)
+## Temporal Stability Categories
 
-| Learning Category | Percentage |
+| Category | Percentage |
 |---|---|
 | Stably Learned | 24.8% |
 | Partially Learned | 43.0% |
 | Unstable | 31.4% |
 | Not Learned | 0.8% |
 
----
-
-# Mislabel Detection Results
-
-| Method | AUC-ROC | Average Precision |
-|---|---|---|
-| Temporal Framework (FSI+CDM+TSS) | 0.819 | 0.210 |
-| Loss Baseline | 0.973 | 0.857 |
-| Confidence Baseline | 0.384 | 0.060 |
-
-### Important Observation
-The temporal framework achieved strong noisy-sample detection capability, although the loss-based baseline still outperformed the current temporal scoring implementation.
-
-This indicates:
-- Temporal signals are meaningful
-- Temporal metrics are predictive
-- Further optimization of multi-signal fusion is required
+These results demonstrate meaningful behavioral separation between different learning patterns.
 
 ---
 
-# Predictive Power
+# Predictive Learning Analysis
 
 The framework achieved:
 
 - Error Prediction AUC-ROC: **0.971 ± 0.005**
 
-This demonstrates that temporal learning behavior strongly correlates with future misclassification risk.
+This demonstrates that temporal behavioral signals strongly correlate with future prediction reliability.
+
+The results support the hypothesis that learning dynamics contain predictive information about neural behavior.
 
 ---
 
@@ -237,55 +274,66 @@ This demonstrates that temporal learning behavior strongly correlates with futur
 The framework includes:
 - Pearson Correlation Analysis
 - Spearman Correlation Analysis
-- KS-Test Distribution Analysis
 - ROC-AUC Evaluation
 - Precision@K Analysis
 - Cross-Validation Error Prediction
+- Behavioral Distribution Analysis
+
+These validation procedures provide quantitative analysis of temporal learning behavior.
 
 ---
 
-# Research Significance
+# Research Insights
 
-Unlike traditional deep learning systems that evaluate only final model performance, this framework studies:
-- How learning evolves
-- How instability emerges
-- How forgetting behavior develops
-- How confidence changes over time
+The experimental observations reveal that:
 
-The project shifts deep learning analysis from:
-- static evaluation
-to:
-- temporal behavioral understanding
+- Neural learning is highly dynamic and non-linear
+- Samples exhibit distinct temporal learning behaviors
+- Confidence evolution varies significantly across samples
+- Forgetting and recovery patterns emerge throughout training
+- Temporal stability strongly relates to prediction reliability
 
----
-
-# Applications
-
-Potential applications include:
-- Noisy label detection
-- Dataset auditing
-- Curriculum learning
-- Explainable AI
-- Adaptive training systems
-- Learning stability diagnostics
-- Sample quality estimation
-- Federated learning diagnostics
-- Real-time training monitoring
+The framework demonstrates that learning behavior itself is an important research signal beyond final model accuracy.
 
 ---
 
-# Visualization Outputs
+# Research Positioning
+
+This project is positioned as:
+
+- Temporal Learning Dynamics Research
+- Neural Behavioral Diagnostics
+- Sample-wise Learning Analysis
+- Interpretable Training Dynamics Research
+- Deep Learning Behavioral Analytics
+
+This framework is NOT positioned as:
+- state-of-the-art noisy-label correction
+- accuracy-focused benchmark optimization
+- replacement for existing loss-based filtering methods
+
+Instead, the focus is on:
+- interpretability
+- temporal analysis
+- behavioral diagnostics
+- predictive learning understanding
+
+---
+
+# Generated Research Outputs
 
 The framework automatically generates:
-- Training overview dashboard
-- Mislabel detection plots
-- Early detection timeline analysis
-- Correlation validation plots
-- Forgetting heatmaps
-- Sample learning timelines
-- Class-level forgetting analysis
 
-All visualization outputs are saved in:
+- Training diagnostics dashboard
+- Forgetting analysis plots
+- Confidence evolution analysis
+- Behavioral category distributions
+- Sample learning trajectories
+- Correlation validation plots
+- Temporal stability analysis
+- Prediction-risk analysis
+
+All outputs are saved to:
 
 ```bash
 ./viz_v2/
@@ -300,46 +348,56 @@ All visualization outputs are saved in:
 - NumPy
 - Pandas
 - Matplotlib
-- Seaborn
 - Scikit-learn
 - SciPy
 
 ---
 
+# Potential Research Applications
+
+Potential future applications include:
+
+- Neural training diagnostics
+- Dataset quality analysis
+- Curriculum learning
+- Explainable AI systems
+- Adaptive training pipelines
+- Federated learning diagnostics
+- Real-time learning monitoring
+- Behavioral model auditing
+
+---
+
 # Future Research Directions
 
-Future extensions may include:
-- Transformer-based temporal diagnostics
-- Federated learning dynamics
+Future work may explore:
+
+- Transformer learning dynamics
+- Real-world noisy datasets
+- Federated temporal learning analysis
 - Adaptive sample reweighting
-- Self-healing training pipelines
-- Real-world noisy dataset evaluation
-- Curriculum learning integration
+- Self-healing training systems
 - Temporal uncertainty estimation
-- Large-scale dataset auditing
+- Large-scale behavioral diagnostics
+- Dynamic curriculum learning
 
 ---
 
-# Research Positioning
+# Research Contribution Summary
 
-This project is best positioned as:
-- Temporal Learning Diagnostics Research
-- Neural Network Behavioral Analysis
-- Sample-wise Learning Dynamics Research
-- Interpretable Deep Learning Diagnostics
+This project contributes a unified framework for:
+- temporal behavioral tracking
+- learning dynamics analysis
+- sample-wise stability diagnostics
+- confidence evolution analysis
+- interpretable neural training visualization
 
-rather than a conventional accuracy-focused classification framework.
-
----
-
-# Citation
-
-If you use this framework in research or academic work, please cite the project appropriately.
+The framework demonstrates that temporal learning behavior provides meaningful insight into neural network reliability, instability, and prediction dynamics.
 
 ---
 
 # Author
 
-Temporal Learning Dynamics Framework v2.0  
-Research-Oriented Deep Learning Diagnostics System
+Temporal Behavioral Diagnostics Framework (TBDF)
 
+Research-Oriented Deep Learning Learning Dynamics Analysis System
